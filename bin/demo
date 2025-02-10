@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+require_relative "../lib/wending_machine"
+
+products = [
+  {name: "Coca Cola", value: 2.0, quantity: 10},
+  {name: "Sprite", value: 2.5, quantity: 10},
+  {name: "Fanta", value: 2.25, quantity: 10},
+  {name: "Orange Juice", value: 3.0, quantity: 10},
+  {name: "Water", value: 3.25, quantity: 0}
+]
+
+coins = [
+  {value: 5.0, quantity: 5},
+  {value: 3.0, quantity: 5},
+  {value: 2.0, quantity: 5},
+  {value: 1.0, quantity: 5},
+  {value: 0.5, quantity: 5},
+  {value: 0.25, quantity: 5}
+]
+
+session = WendingMachine::Session.new(products: products, coins: coins)
+WendingMachine::Cli.run(session)
