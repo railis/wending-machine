@@ -93,8 +93,10 @@ module WendingMachine
           set_message("Yey, you bought one #{@selected_product}. Here is the change: #{format_coins(change)}")
         else
           case error
+          when :not_enough_cash
+            set_message("Not enough money. Returning coins: #{format_coins(@session.inserted_coins)}", error: true)
           when :no_change
-            set_message("Not enough change. Returning coins: #{format_coins(@session.inserted_coins)}")
+            set_message("Not enough change. Returning coins: #{format_coins(@session.inserted_coins)}", error: true)
           end
         end
         @session.inserted_coins.clear_quantities!
